@@ -1,30 +1,46 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:whatsapp_ui_flutter/calls.dart';
+import 'package:whatsapp_ui_flutter/chat.dart';
+import 'package:whatsapp_ui_flutter/community.dart';
+import 'package:whatsapp_ui_flutter/update.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int index=0;
+  List<Widget>screens=[Chat(),Update(),Community(),Calls()];
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 5, 5, 5),
-        foregroundColor: const Color.fromARGB(255, 252, 250, 250),
-        title: Text("WhatsApp"),
-        actions: [
-          Icon(Icons.qr_code_scanner),
-          SizedBox(width: 30),
-          Icon(Icons.camera_alt_outlined),
-          SizedBox(width: 30),
-          Icon(Icons.more_vert),
+      bottomNavigationBar: BottomNavigationBar(onTap:(value) {
+        setState(() {
+          index=value;
+        });
+      } ,
+        currentIndex:index,
+        selectedItemColor: const Color.fromARGB(66, 10, 5, 5),showUnselectedLabels: true,
+      unselectedItemColor: Colors.grey,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat_rounded),
+            label: "chats",
+          ), BottomNavigationBarItem(
+            icon: Icon(Icons.update),
+            label: "updates"),
+             BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: "communities"),
+             BottomNavigationBarItem(
+            icon: Icon(Icons.call),
+            label: "calls"),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromARGB(255, 34, 97, 36),
-        foregroundColor: const Color.fromARGB(255, 8, 8, 8),
-        onPressed: () {},
-        child: Icon(Icons.message),
-      ),
+      ),body: screens[index],
     );
   }
 }

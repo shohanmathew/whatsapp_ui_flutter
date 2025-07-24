@@ -5,6 +5,6 @@ class Community extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(backgroundColor:const Color.fromARGB(255, 169, 197, 245));
   }
 }
