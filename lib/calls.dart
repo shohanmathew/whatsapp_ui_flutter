@@ -36,7 +36,16 @@ class Calls extends StatelessWidget {
           ),Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text("Recent",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+          ),ListTile(trailing: Icon(Icons.call),
+            subtitle: Text("just now"),
+            title: Text("shohan"),
+            leading: CircleAvatar(
+              backgroundImage: AssetImage(
+                "assets/cool-avatar-transparent-image-cool-boy-avatar-11562893383qsirclznyw.png",
+              ),
+            ),
           ),
+          
         ],
       ),
       floatingActionButton: FloatingActionButton(
